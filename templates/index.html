@@ -2,36 +2,47 @@
 <html>
 <head>
     <title>SmartVision</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body>
 
-<h2>SmartVision - Deepfake Detection</h2>
+<div class="card">
+    <h1>SmartVision 👁️</h1>
+    <p>Deepfake Detection using AI</p>
 
-<form method="POST" enctype="multipart/form-data">
-    
-    <input type="file" name="image" accept="image/*" onchange="previewImage(event)" required>
-    
-    <br><br>
+    <form method="POST" enctype="multipart/form-data" onsubmit="showLoader()">
+        <input type="file" name="image" accept="image/*" onchange="previewImage(event)" required>
 
-    <img id="preview" style="display:none; max-width:300px;">
+        <img id="preview">
 
-    <br><br>
+        <br>
 
-    <button type="submit">Check</button>
+        <button type="submit">Analyze Image</button>
+    </form>
 
-</form>
+    <div class="loader" id="loader">🔄 Analyzing...</div>
 
-{% if result %}
-    <h3>Result: {{ result }}</h3>
-{% endif %}
+    {% if result %}
+        <div class="result {% if 'Fake' in result %}fake{% else %}real{% endif %}">
+            {{ result }}
+        </div>
 
-<script>
-function previewImage(event) {
-    const img = document.getElementById('preview');
-    img.src = URL.createObjectURL(event.target.files[0]);
-    img.style.display = 'block';
-}
-</script>
+        <div class="confidence-bar">
+            <div class="confidence-fill" id="confidenceFill"></div>
+        </div>
+    {% endif %}
+
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+</div>
+
+<!-- JS -->
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 </body>
 </html>

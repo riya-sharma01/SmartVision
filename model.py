@@ -22,7 +22,7 @@ def predict(image_path):
 
         confidence, pred = torch.max(probs, dim=1)
 
-    label_map = {0: "Fake", 1: "Real"}  # model-specific
+    label_map = {0: "Real", 1: "Fake"}# model-specific
     label = label_map[pred.item()]
     confidence = confidence.item() * 100
 

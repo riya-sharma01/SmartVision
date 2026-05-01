@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #b17788, #a0a4abc3);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Card */
+.card {
+    background: rgba(255,255,255,0.1);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    text-align: center;
+    width: 350px;
+}
+
+h1 {
+    margin-bottom: 5px;
+}
+
+p {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+input[type="file"] {
+    margin: 15px 0;
+}
+
+/* Button */
+button {
+    background: #6ec4db;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ccd5e0;
+}
+
+/* Image Preview */
+img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+    display: none;
+}
+
+/* Result */
+.result {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.real {
+    color: #00ffcc;
+}
+
+.fake {
+    color: #ff4d4d;
+}
+
+/* Confidence bar */
+.confidence-bar {
+    height: 8px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 5px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.confidence-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00ffcc, #00c6ff);
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+/* Loader */
+.loader {
+    display: none;
+    margin-top: 15px;
+}
+
+/* Error */
+.error {
+    color: #ffcccc;
+    margin-top: 10px;
+}
